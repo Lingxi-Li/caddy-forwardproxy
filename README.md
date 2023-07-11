@@ -22,16 +22,15 @@ Simple example that uses forward_proxy as first priority and as second just show
 {
   order forward_proxy before file_server
 }
-:443, example.com {
-  tls acme@example.com
+:443, <DOMAIN_NAME_1>, <DOMAIN_NAME_2> {
   forward_proxy {
-    basic_auth abc def
+    basic_auth <USERNAME> <PWD>
     hide_ip
     hide_via
     probe_resistance
   }
-  file_server {
-    root /home/user/webpage
+  file_server browse {
+    root <FILES_ROOT_PATH>
   }
 }
 ```
